@@ -45,10 +45,10 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "mdatp";
-  version = "101.25012.0000";
+  version = "101.26032.0000";
   src = fetchurl {
-    url = "https://packages.microsoft.com/debian/12/prod/pool/main/m/${pname}/${pname}_${version}_amd64.deb";
-    hash = "sha256-EBnfz4z1t4jwGPKZIKTK1TFacV3UA3BAD1lS+ixs2TE=";
+    url = "https://packages.microsoft.com/debian/13/prod/pool/main/m/${pname}/${pname}_${version}_amd64.deb";
+    hash = "sha256-UiPInuoR9C+EHSEuzowXtzGfnk39XtzGfnk39XsN0WDGWuS1e+ns=";
   };
 
   nativeBuildInputs = [ dpkg makeWrapper ];
