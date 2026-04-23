@@ -14,7 +14,9 @@
   openssl,
   gcc,
   libcap,
+  libbpf,
   pcre,
+  pcre2,
   acl,
   zlib,
   gzip,
@@ -36,7 +38,9 @@ let
     openssl
     gcc.cc.lib # Specifically for libatomic
     libcap
+    libbpf
     pcre
+    pcre2
     acl
     zlib
     fuse
@@ -48,7 +52,7 @@ stdenv.mkDerivation rec {
   version = "101.26032.0000";
   src = fetchurl {
     url = "https://packages.microsoft.com/debian/13/prod/pool/main/m/${pname}/${pname}_${version}_amd64.deb";
-    hash = "sha256-UiPInuoR9C+EHSEuzowXtzGfnk39XtzGfnk39XsN0WDGWuS1e+ns=";
+    hash = "sha256-UiPInuoR9C+EHSEuzowXtzGfnk39XsN0WGDWuS1e+ns=";
   };
 
   nativeBuildInputs = [ dpkg makeWrapper ];
