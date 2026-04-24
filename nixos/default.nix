@@ -55,7 +55,8 @@ in {
     systemd.services.mdatp = {
       enable = true;
       description = "Microsoft Defender Advanced Threat Protection Daemon";
-      after = [ "network.target" ];
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "simple";
