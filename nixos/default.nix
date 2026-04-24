@@ -52,6 +52,17 @@ in {
     programs.bash.interactiveShellInit = lib.mkIf cfg.enableBashIntegration "source ${cfg.package}/resources/mdatp_completion.bash # enable shell integration for mdatp";
     programs.zsh.interactiveShellInit  = lib.mkIf cfg.enableZshIntegration  "source ${cfg.package}/resources/mdatp_completion.zsh  # enable shell integration for mdatp";
 
+    environment.etc."mdatp-fake-os-release".text = ''
+      NAME="Ubuntu"
+      VERSION="24.04 LTS (Noble Numbat)"
+      ID=ubuntu
+      ID_LIKE=debian
+      PRETTY_NAME="Ubuntu 24.04 LTS"
+      VERSION_ID="24.04"
+      VERSION_CODENAME=noble
+      UBUNTU_CODENAME=noble
+    '';
+
     systemd.services.mdatp = {
       enable = true;
       description = "Microsoft Defender Advanced Threat Protection Daemon";
@@ -71,6 +82,7 @@ in {
         Restart="always";
         # all available cgroup controllers are enabled and not influenced by systemd
         Delegate="yes";
+        BindReadOnlyPaths = [ "/etc/mdatp-fake-os-release:/etc/os-release" ];
       };
       unitConfig = {
         DefaultDependencies = false;

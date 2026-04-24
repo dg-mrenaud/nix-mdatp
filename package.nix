@@ -51,8 +51,8 @@ stdenv.mkDerivation rec {
   pname = "mdatp";
   version = "101.26032.0000";
   src = fetchurl {
-    url = "https://packages.microsoft.com/debian/13/prod/pool/main/m/${pname}/${pname}_${version}_amd64.deb";
-    hash = "sha256-UiPInuoR9C+EHSEuzowXtzGfnk39XsN0WGDWuS1e+ns=";
+    url = "https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/${pname}/${pname}_${version}_amd64.deb";
+    hash = "sha256-7F+a7LfkZGK8yGa3lfaqn5ynJIWxd3QWjlNznIyuf7M=";
   };
 
   nativeBuildInputs = [ dpkg makeWrapper ];
